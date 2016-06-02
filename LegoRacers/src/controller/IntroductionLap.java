@@ -7,6 +7,8 @@ import carControl.SteeringControl;
 import data.TrackCorner;
 import data.TrackData;
 import data.TrackStraight;
+import lejos.nxt.LCD;
+import lejos.nxt.Motor;
 import sensors.RGBControl;
 
 public class IntroductionLap {
@@ -38,9 +40,21 @@ public class IntroductionLap {
 	// Parameters
 	private int default_radius_curve = 30; // in degree
 	private int default_delay_before_turning = 2; // turnings of wheel
-	private int default_speed = 10; // default speed for car in introduction lap
+	private int default_speed = 600; // default speed for car in introduction lap
 	
-	
+	/* ------------------------------------------------ */
+	/* ------------------------------------------------ */
+	/* DEBUG */
+	/* ------------------------------------------------ */
+	/* ------------------------------------------------ */
+	private void accelerateTo(int speed) {
+		Motor.A.backward();
+		Motor.C.backward();
+		Motor.A.setSpeed(speed);
+		Motor.C.setSpeed(speed);
+	}
+	/* ------------------------------------------------ */
+	/* ------------------------------------------------ */
 	
 	public IntroductionLap(MotorControl motorControl, SteeringControl steeringControl, RGBControl left, RGBControl right) {
 		this.steeringControl = steeringControl;
@@ -54,16 +68,22 @@ public class IntroductionLap {
 		int colorLeft;
 		int colorRight;
 		
+		LCD.drawString("startLap()", 0, 1);
+		LCD.drawString(String.valueOf(RGBLeft.getColor()), 0, 4);
+		LCD.drawString(String.valueOf(RGBRight.getColor()), 0, 5);
+		LCD.drawString(String.valueOf(RGBControl.BLACK), 0, 6);
+		
 		// If one of the two color sensors isn't black -> car is not in the right position
 		if ((RGBLeft.getColor() != RGBControl.BLACK ) || (RGBRight.getColor() != RGBControl.BLACK)) {
-			throw new IllegalStartPositionException();
+			throw new IllegalStartPositionException("IllExcp");
 		}
 		lastColorLeft = RGBLeft.getColor();
 		lastColorRight = RGBRight.getColor();
 		
 		// start
 		
-		motorControl.accelerateTo(default_speed);
+		accelerateTo(default_speed);
+		LCD.drawString("accelerated", 0, 1);
 		
 		while (true) {
 			try {
@@ -94,7 +114,7 @@ public class IntroductionLap {
 	private void before_c_lap(int colorLeft, int colorRight) throws IllegalStartPositionException {
 		if (!isOnLine && colorLeft != RGBControl.RED && colorRight != RGBControl.RED) {
 			// unmögliche Startposition, da nicht als erstes die Start/Ziel-Linie überquert wird
-			throw new IllegalStartPositionException();
+			throw new IllegalStartPositionException("IllExcp");
 		}
 		else if (isOnLine && colorLeft == RGBControl.BLACK && colorRight == RGBControl.BLACK) {
 			isOnLine = false;
@@ -107,7 +127,7 @@ public class IntroductionLap {
 	}
 	
 	private void after_c_lap(int colorLeft, int colorRight) {
-		
+		motorControl.brakeTo(0);
 	}
 	
 	private void gerade(int colorLeft, int colorRight) throws UnknownStateException {
@@ -166,13 +186,13 @@ public class IntroductionLap {
 					// drive backwards one turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5); // sub 5 degree to radius
 					steeringControl.steerRight(5);
-					motorControl.accelerateTo(default_speed);
+					accelerateTo(default_speed);
 				}
 				else {
 					// drive backwards three turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5); // add 5 degree to radius
 					steeringControl.steerRight(5);
-					motorControl.accelerateTo(default_speed);
+					accelerateTo(default_speed);
 				}
 			}
 			else if (colorLeft == RGBControl.BLACK && colorRight == RGBControl.WHITE) {
@@ -180,13 +200,13 @@ public class IntroductionLap {
 					// drive backwards one turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5); // sub 5 degree to radius
 					steeringControl.steerLeft(5);
-					motorControl.accelerateTo(default_speed);
+					accelerateTo(default_speed);
 				}
 				else {
 					// drive backwards three turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5); // add 5 degree to radius
 					steeringControl.steerLeft(5);
-					motorControl.accelerateTo(default_speed);
+					accelerateTo(default_speed);
 				}
 			}
 			else if (colorLeft == RGBControl.GREEN && colorRight == RGBControl.GREEN) {
@@ -201,7 +221,7 @@ public class IntroductionLap {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-2);
 				}
 				steeringControl.steerLeft(2);
-				motorControl.accelerateTo(default_speed);
+				accelerateTo(default_speed);
 			}
 			else if (colorRight == RGBControl.GREEN) {
 				// drive backwards 3 turns
@@ -212,7 +232,7 @@ public class IntroductionLap {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+2);
 				}
 				steeringControl.steerRight(2);
-				motorControl.accelerateTo(default_speed);
+				accelerateTo(default_speed);
 			}
 			else {
 				throw new UnknownStateException();
@@ -241,7 +261,7 @@ public class IntroductionLap {
 		else {
 			steeringControl.steerLeft(currentKurve.getSteeringRate());
 		}
-		motorControl.accelerateTo(default_speed);
+		accelerateTo(default_speed);
 		inSection = true;
 	}
 	
@@ -270,7 +290,7 @@ public class IntroductionLap {
 			}
 			else {
 				if (RGBLeft.getColor() == RGBControl.GREEN || RGBRight.getColor() == RGBControl.GREEN) {
-					motorControl.accelerateTo(default_speed);
+					accelerateTo(default_speed);
 					return direction;
 				}
 			}
