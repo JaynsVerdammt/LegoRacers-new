@@ -40,7 +40,7 @@ public class IntroductionLap {
 	// Parameters
 	private int default_radius_curve = 30; // in degree
 	private int default_delay_before_turning = 2; // turnings of wheel
-	private int default_speed = 600; // default speed for car in introduction lap
+	private int default_speed = 200; // default speed for car in introduction lap
 	
 	/* ------------------------------------------------ */
 	/* ------------------------------------------------ */
@@ -48,10 +48,21 @@ public class IntroductionLap {
 	/* ------------------------------------------------ */
 	/* ------------------------------------------------ */
 	private void accelerateTo(int speed) {
-		Motor.A.backward();
-		Motor.C.backward();
 		Motor.A.setSpeed(speed);
 		Motor.C.setSpeed(speed);
+	}
+	
+	private void stop() {
+		Motor.A.stop();
+		Motor.C.stop();
+	}
+	
+	public static void sleep(int sleep) {
+		try {
+			Thread.sleep(sleep);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	/* ------------------------------------------------ */
 	/* ------------------------------------------------ */
@@ -61,6 +72,10 @@ public class IntroductionLap {
 		this.motorControl = motorControl;
 		this.RGBLeft = left;
 		this.RGBRight = right;
+		
+		// DEBUG
+		Motor.A.backward();
+		Motor.C.backward();
 	}
 	
 	public void startLap() throws IllegalStartPositionException {
@@ -89,7 +104,7 @@ public class IntroductionLap {
 			try {
 				colorLeft = RGBLeft.getColor();
 				colorRight = RGBRight.getColor();
-				if (colorLeft != lastColorLeft || colorRight != lastColorRight) {
+				//if (colorLeft != lastColorLeft || colorRight != lastColorRight) {
 					switch (abschnitt) {
 						case BEFORE_C_LAP:	before_c_lap(colorLeft, colorRight);
 											break;
@@ -100,7 +115,7 @@ public class IntroductionLap {
 						case KURVE:			kurve(colorLeft, colorRight);
 											break;
 					}
-				}
+				//}
 				lastColorLeft = colorLeft;
 				lastColorRight = colorRight;
 			}
@@ -112,6 +127,10 @@ public class IntroductionLap {
 	
 	// Executed only after changes of the RGB-Sensors
 	private void before_c_lap(int colorLeft, int colorRight) throws IllegalStartPositionException {
+		if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
+			abschnitt = GERADE;
+		}
+		/*
 		if (!isOnLine && colorLeft != RGBControl.RED && colorRight != RGBControl.RED) {
 			// unmögliche Startposition, da nicht als erstes die Start/Ziel-Linie überquert wird
 			throw new IllegalStartPositionException("IllExcp");
@@ -123,7 +142,7 @@ public class IntroductionLap {
 		}
 		else {
 			isOnLine = true;
-		}
+		}*/
 	}
 	
 	private void after_c_lap(int colorLeft, int colorRight) {
@@ -131,6 +150,21 @@ public class IntroductionLap {
 	}
 	
 	private void gerade(int colorLeft, int colorRight) throws UnknownStateException {
+		
+		if (colorLeft == RGBControl.WHITE || colorRight == RGBControl.WHITE) {
+			stop();
+			LCD.drawString("weiß", 0, 6);
+			sleep(5000);
+			accelerateTo(default_speed);
+		}
+		else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+			stop();
+			LCD.drawString("grün", 0, 6);
+			sleep(5000);
+			accelerateTo(default_speed);
+		}
+		/*
+		
 		if (isOnLine) {
 			if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
 				// do nothing
@@ -162,7 +196,7 @@ public class IntroductionLap {
 			else {
 				throw new UnknownStateException();
 			}
-		}
+		}*/
 	}
 	
 	private void kurve(int colorLeft, int colorRight) throws UnknownStateException {
