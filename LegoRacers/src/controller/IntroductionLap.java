@@ -7,6 +7,7 @@ import carControl.SteeringControl;
 import data.TrackCorner;
 import data.TrackData;
 import data.TrackStraight;
+import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import sensors.RGBControl;
@@ -20,11 +21,15 @@ public class IntroductionLap {
 	private int lastColorLeft;
 	private int lastColorRight;
 	
+	private int corner_start = -1;
+	private int corner_end = -1;
+	
 	private static final int BEFORE_C_LAP = 0;
 	private static final int AFTER_C_LAP = 1;
 	private static final int GERADE = 2;
 	private static final int KURVE = 3;
 	private int abschnitt = BEFORE_C_LAP;
+	//private int abschnitt = GERADE;
 	
 	// indicates if the car is currently on a line
 	private boolean isOnLine = false;
@@ -40,7 +45,7 @@ public class IntroductionLap {
 	// Parameters
 	private int default_radius_curve = 40; // in degree
 	private int default_delay_before_turning = 2; // turnings of wheel
-	private int default_speed = 200; // default speed for car in introduction lap
+	private int default_speed = 150; // default speed for car in introduction lap
 	
 	/* ------------------------------------------------ */
 	/* ------------------------------------------------ */
@@ -48,8 +53,38 @@ public class IntroductionLap {
 	/* ------------------------------------------------ */
 	/* ------------------------------------------------ */
 	private void accelerateTo(int speed) {
-		Motor.A.setSpeed(speed);
-		Motor.C.setSpeed(speed);
+		if (speed < 0) {
+			Motor.A.forward();
+			Motor.C.forward();
+			Motor.A.setSpeed(-speed);
+			Motor.C.setSpeed(-speed);
+		}
+		else {
+			Motor.A.backward();
+			Motor.C.backward();
+			Motor.A.setSpeed(speed);
+			Motor.C.setSpeed(speed);
+		}
+	}
+	
+	private void steerLeft(int degree) {
+		Motor.B.rotateTo(degree);
+	}
+	
+	private void steerRight(int degree) {
+		Motor.B.rotateTo(-degree);
+	}
+	
+	private void steerLeftFor(int degree) {
+		Motor.B.rotate(-degree);
+	}
+	
+	private void steerRightFor(int degree) {
+		Motor.B.rotate(degree);
+	}
+	
+	private void steerStraight() {
+		Motor.B.rotateTo(0);
 	}
 	
 	private void stop() {
@@ -83,11 +118,6 @@ public class IntroductionLap {
 		int colorLeft;
 		int colorRight;
 		
-		LCD.drawString("startLap()", 0, 1);
-		LCD.drawString(String.valueOf(RGBLeft.getColor()), 0, 4);
-		LCD.drawString(String.valueOf(RGBRight.getColor()), 0, 5);
-		LCD.drawString(String.valueOf(RGBControl.BLACK), 0, 6);
-		
 		// If one of the two color sensors isn't black -> car is not in the right position
 		if ((RGBLeft.getColor() != RGBControl.BLACK ) || (RGBRight.getColor() != RGBControl.BLACK)) {
 			throw new IllegalStartPositionException("IllExcp");
@@ -96,15 +126,15 @@ public class IntroductionLap {
 		lastColorRight = RGBRight.getColor();
 		
 		// start
-		
+		corner_start = RGBControl.GREEN;
+		corner_end = RGBControl.GREEN;
 		accelerateTo(default_speed);
-		LCD.drawString("accelerated", 0, 1);
 		
 		while (true) {
 			try {
 				colorLeft = RGBLeft.getColor();
 				colorRight = RGBRight.getColor();
-				//if (colorLeft != lastColorLeft || colorRight != lastColorRight) {
+				if (colorLeft != lastColorLeft || colorRight != lastColorRight) {
 					switch (abschnitt) {
 						case BEFORE_C_LAP:	before_c_lap(colorLeft, colorRight);
 											break;
@@ -115,7 +145,7 @@ public class IntroductionLap {
 						case KURVE:			kurve(colorLeft, colorRight);
 											break;
 					}
-				//}
+				}
 				lastColorLeft = colorLeft;
 				lastColorRight = colorRight;
 			}
@@ -127,28 +157,54 @@ public class IntroductionLap {
 	
 	// Executed only after changes of the RGB-Sensors
 	private void before_c_lap(int colorLeft, int colorRight) throws IllegalStartPositionException {
-		if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
+		if (!isOnLine && (colorLeft == RGBControl.RED || colorRight == RGBControl.RED)) {
+			isOnLine = true;
+		}
+		else if (isOnLine && colorLeft != RGBControl.RED && colorRight != RGBControl.RED) {
 			abschnitt = GERADE;
 			startGerade();
 		}
 	}
 	
 	private void after_c_lap(int colorLeft, int colorRight) {
-		motorControl.brakeTo(0);
+		//motorControl.brakeTo(0);
+		stop();
 		LCD.drawString("Fertig", 0, 6);
 		sleep(10000);
 	}
 	
 	private void gerade(int colorLeft, int colorRight) throws UnknownStateException {
-		if (colorLeft == RGBControl.WHITE || colorRight == RGBControl.WHITE) {
-			stop();
-			LCD.drawString("weiss", 0, 6);
-			sleep(3000);
-			accelerateTo(default_speed);
+		if (colorLeft == RGBControl.WHITE) {
+			//stop();
+			correctToRight();
+			//accelerateTo(default_speed);
+		}
+		else if (colorRight == RGBControl.WHITE) {
+			correctToLeft();
+		}
+		// farbe der kurvenlinien noch nicht initialisiert
+		else if (corner_start < 0) {
+			if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+				corner_start = RGBControl.GREEN;
+				corner_end = RGBControl.BLUE;
+				LCD.drawString("START GREEN", 0, 1);
+				LCD.drawString("END BLUE", 0, 2);
+				endGerade();
+				abschnitt = KURVE;
+				startKurve();
+			}
+			else if (colorLeft == RGBControl.BLUE || colorRight == RGBControl.BLUE) {
+				corner_start = RGBControl.BLUE;
+				corner_end = RGBControl.GREEN;
+				LCD.drawString("START BLUE", 0, 1);
+				LCD.drawString("END GREEN", 0, 2);
+				endGerade();
+				abschnitt = KURVE;
+				startKurve();
+			}
 		}
 		// Kurve startet
-		else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
-			LCD.drawString("green", 0, 6);
+		else if (colorLeft == corner_start || colorRight == corner_start) {
 			endGerade();
 			abschnitt = KURVE;
 			startKurve();
@@ -157,14 +213,17 @@ public class IntroductionLap {
 		else if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
 			stop();
 			abschnitt = AFTER_C_LAP;
-			LCD.drawString("ENDEE", 0, 6);
-			
+			LCD.drawString("ENDEE", 0, 5);
+		}
+		// beides schwarz, normal auf Strecke
+		else {
+			// do nothing
 		}
 		
 		/*
 		
 		if (isOnLine) {
-			if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+			if (colorLeft == corner_start || colorRight == corner_start) {
 				// do nothing
 			}
 			else {
@@ -184,7 +243,7 @@ public class IntroductionLap {
 			else if (colorLeft == RGBControl.BLACK && colorRight == RGBControl.WHITE) {
 				correctLeft();
 			}
-			else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+			else if (colorLeft == corner_start || colorRight == corner_start) {
 				isOnLine = true;
 			}
 			else if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
@@ -198,24 +257,35 @@ public class IntroductionLap {
 	}
 	
 	private void kurve(int colorLeft, int colorRight) throws UnknownStateException {
-		if (colorLeft == RGBControl.WHITE || colorRight == RGBControl.WHITE) {
-			stop();
-			LCD.drawString("weiss", 0, 6);
-			sleep(3000);
-			accelerateTo(default_speed);
+		if (colorLeft == RGBControl.WHITE) {
+			//stop();
+			correctToRight();
+			//accelerateTo(default_speed);
 		}
-		// Kurve startet
-		else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
-			LCD.drawString("green", 0, 6);
+		else if (colorRight == RGBControl.WHITE) {
+			correctToLeft();
+		}
+		// Kurve endet
+		/*else if (colorLeft == corner_start || colorRight == corner_start) {
+			LCD.drawString("finished", 0, 4);
 			endKurve();
+			abschnitt = GERADE;
+			startGerade();
+		}*/
+		else if (colorLeft == corner_end) {
+			endKurve(TrackCorner.LEFT);
+			abschnitt = GERADE;
+			startGerade();
+		}
+		else if (colorRight == corner_end) {
+			endKurve(TrackCorner.RIGHT);
 			abschnitt = GERADE;
 			startGerade();
 		}
 		
 		
-		
 		/*if (isOnLine) {
-			if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+			if (colorLeft == corner_start || colorRight == corner_start) {
 				// do nothing
 			}
 			else {
@@ -233,13 +303,13 @@ public class IntroductionLap {
 				if (currentKurve.getDirection() == TrackCorner.LEFT) {
 					// drive backwards one turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5); // sub 5 degree to radius
-					steeringControl.steerRight(5);
+					steerRight(5);
 					accelerateTo(default_speed);
 				}
 				else {
 					// drive backwards three turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5); // add 5 degree to radius
-					steeringControl.steerRight(5);
+					steerRight(5);
 					accelerateTo(default_speed);
 				}
 			}
@@ -247,20 +317,20 @@ public class IntroductionLap {
 				if (currentKurve.getDirection() == TrackCorner.RIGHT) {
 					// drive backwards one turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5); // sub 5 degree to radius
-					steeringControl.steerLeft(5);
+					steerLeft(5);
 					accelerateTo(default_speed);
 				}
 				else {
 					// drive backwards three turning
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5); // add 5 degree to radius
-					steeringControl.steerLeft(5);
+					steerLeft(5);
 					accelerateTo(default_speed);
 				}
 			}
-			else if (colorLeft == RGBControl.GREEN && colorRight == RGBControl.GREEN) {
+			else if (colorLeft == corner_start && colorRight == corner_start) {
 				isOnLine = true;
 			}
-			else if (colorLeft == RGBControl.GREEN) {
+			else if (colorLeft == corner_start) {
 				// drive backwards 3 turns
 				if (currentKurve.getDirection() == TrackCorner.LEFT) {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+2);
@@ -268,10 +338,10 @@ public class IntroductionLap {
 				else {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-2);
 				}
-				steeringControl.steerLeft(2);
+				steerLeft(2);
 				accelerateTo(default_speed);
 			}
-			else if (colorRight == RGBControl.GREEN) {
+			else if (colorRight == corner_start) {
 				// drive backwards 3 turns
 				if (currentKurve.getDirection() == TrackCorner.LEFT) {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()-2);
@@ -279,7 +349,7 @@ public class IntroductionLap {
 				else {
 					currentKurve.setSteeringRate(currentKurve.getSteeringRate()+2);
 				}
-				steeringControl.steerRight(2);
+				steerRight(2);
 				accelerateTo(default_speed);
 			}
 			else {
@@ -289,6 +359,7 @@ public class IntroductionLap {
 	}
 	
 	private void startGerade() {
+		LCD.drawString("Gerad", 0, 7);
 		currentGerade = new TrackStraight();
 		inSection = true;
 	}
@@ -300,21 +371,36 @@ public class IntroductionLap {
 	}
 	
 	private void startKurve() {
+		LCD.drawString("Kurve", 0, 7);
 		currentKurve = new TrackCorner();
 		currentKurve.setDirection(calcDirection());
 		//driveForward(currentKurve.getDelay); // turns
 		if (currentKurve.getDirection() == TrackCorner.LEFT) {
-			steeringControl.steerLeft(currentKurve.getSteeringRate());
+			steerLeft(currentKurve.getSteeringRate());
 		}
 		else {
-			steeringControl.steerRight(currentKurve.getSteeringRate());
+			steerRight(currentKurve.getSteeringRate());
 		}
 		accelerateTo(default_speed);
 		inSection = true;
 	}
 	
-	private void endKurve() {
-		steeringControl.steerStraight();
+	private void endKurve(int markedSensor) { // LEFT oder RIGHT
+		/*long timeStart = System.currentTimeMillis();
+		long stopTime;
+		if (markedSensor == TrackCorner.LEFT) {
+			while (RGBRight.getColor() != corner_end) {}
+			stopTime = System.currentTimeMillis();
+		}
+		else {
+			while (RGBLeft.getColor() != corner_end) {}
+			stopTime = System.currentTimeMillis();
+		}
+		*/
+		
+		
+		sleep(400);
+		steerStraight();
 		sections.add(currentKurve);
 		currentKurve = null;
 		inSection = false;
@@ -329,7 +415,7 @@ public class IntroductionLap {
 					// drive backwards
 				}
 				else if (RGBRight.getColor() == RGBControl.WHITE) {
-					direction = TrackCorner.RIGHT;
+					direction = TrackCorner.LEFT;
 					// drive backwards
 				}
 				else {
@@ -338,12 +424,21 @@ public class IntroductionLap {
 			}
 			else {
 				stop();
-				LCD.drawString("set back", 0, 6);
-				sleep(3000);
-				//accelerateTo(default_speed);				
+				sleep(500);
+				accelerateTo(-default_speed);
+				// solange keiner von beiden grün ist, rückwärts fahren
+				while (RGBRight.getColor() != corner_start && RGBLeft.getColor() != corner_start) {
+					
+				}
+				stop();
+				sleep(500);
+				accelerateTo(default_speed);
+				while (RGBRight.getColor() != corner_start && RGBLeft.getColor() != corner_start) {
+					
+				}				
 				return direction;
 				/*
-				if (RGBLeft.getColor() == RGBControl.GREEN || RGBRight.getColor() == RGBControl.GREEN) {
+				if (RGBLeft.getColor() == corner_start || RGBRight.getColor() == corner_start) {
 					accelerateTo(default_speed);
 					return direction;
 				}*/
@@ -351,11 +446,47 @@ public class IntroductionLap {
 		}
 	}
 	
-	private void correctLeft() {
-		
+	private void correctToLeft() {
+		stop();
+		sleep(500);
+		accelerateTo(-default_speed);
+		// solange einer von beiden nicht schwarz ist, zurückfahren
+		while (RGBRight.getColor() != RGBControl.BLACK || RGBLeft.getColor() != RGBControl.BLACK) {
+			
+		}
+		sleep(400);
+		stop();
+		accelerateTo(default_speed);
+		steerLeftFor(20);
+		if (abschnitt == KURVE) {
+			if (currentKurve.getDirection() == TrackCorner.LEFT) {
+				currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5);
+			}
+			else {
+				currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5);
+			}
+		}
 	}
 	
-	private void correctRight() {
-		
+	private void correctToRight() {
+		stop();
+		sleep(500);
+		accelerateTo(-default_speed);
+		// solange einer von beiden nicht schwarz ist, zurückfahren
+		while (RGBRight.getColor() != RGBControl.BLACK || RGBLeft.getColor() != RGBControl.BLACK) {
+			
+		}
+		sleep(400);
+		stop();
+		accelerateTo(default_speed);
+		steerRightFor(20);
+		if (abschnitt == KURVE) {
+			if (currentKurve.getDirection() == TrackCorner.LEFT) {
+				currentKurve.setSteeringRate(currentKurve.getSteeringRate()-5);
+			}
+			else {
+				currentKurve.setSteeringRate(currentKurve.getSteeringRate()+5);
+			}
+		}
 	}
 }

@@ -3,7 +3,7 @@ package carControl;
 import lejos.nxt.Motor;
 import lejos.nxt.NXTRegulatedMotor;
 
-public class MotorControl extends Thread {
+public class MotorControl{
 
 	private NXTRegulatedMotor leftMotor = Motor.C;
 	private NXTRegulatedMotor rightMotor = Motor.A;
@@ -17,41 +17,33 @@ public class MotorControl extends Thread {
 
 	}
 
-	public void run() {
-		while (!semaphore) {
-			currentSpeed = this.getSpeed();
-			if (currentSpeed != aimSpeed) {
-				int tempDif = aimSpeed - currentSpeed;
-				tempDif = Math.round(tempDif / 2);
-				setSpeed(currentSpeed + tempDif);
-			}
-		}
-
-	}
 
 	public void accelerateTo(int speed) {
-		semaphore = true;
 		if (speed < topSpeed) {
 			this.aimSpeed = speed;
 		} else {
 			this.aimSpeed = this.topSpeed;
 		}
-		semaphore = false;
+		actMotorSpeed();
 	}
 
 	public void brakeTo(int speed) {
-		semaphore = true;
 		if (speed < this.currentSpeed) {
 			this.aimSpeed = speed;
 		} else if (speed < 0) {
 			this.aimSpeed = 0;
 		}
-		semaphore = false;
+		actMotorSpeed();
 	}
 	
 	public void stopMotors(){
 		leftMotor.stop();
 		rightMotor.stop();
+	}
+	
+	private void actMotorSpeed(){
+		leftMotor.setSpeed(aimSpeed);
+		rightMotor.setSpeed(aimSpeed);
 	}
 
 	private int getSpeed() {
@@ -60,9 +52,12 @@ public class MotorControl extends Thread {
 	}
 
 	private void setSpeed(int speed) {
-		if(speed > topSpeed)speed=topSpeed;
+		if(speed > topSpeed){
+			speed=topSpeed;
+		}
 		leftMotor.setSpeed(speed);
 		rightMotor.setSpeed(speed);
+		actMotorSpeed();
 	}
 
 }

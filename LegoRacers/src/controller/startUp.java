@@ -9,10 +9,6 @@ public class startUp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		LCPBTResponder lcpThread = new LCPBTResponder();
-		lcpThread.setDaemon(true);
-		lcpThread.start();
-		
 		MainControl m = new MainControl();
 		m.initialize();
 		LCD.drawString("MainControl initialized", 0, 0);

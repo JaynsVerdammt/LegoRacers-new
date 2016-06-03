@@ -11,6 +11,7 @@ public class RGBControl extends Thread{
 	public static final int WHITE = Color.WHITE;
 	public static final int RED = Color.RED;
 	public static final int GREEN = Color.GREEN;
+	public static final int BLUE = Color.BLUE;
 	
 	private ColorSensor colorSensor;
 	
