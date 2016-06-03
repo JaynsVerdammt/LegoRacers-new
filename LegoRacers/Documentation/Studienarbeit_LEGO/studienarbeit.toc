@@ -18,6 +18,6 @@
 \contentsline {section}{\numberline {5}Projektplan zum weiteren Vorgehen}{14}{section.5}
 \contentsline {section}{\numberline {6}Zweite Umsetzungsphase}{15}{section.6}
 \contentsline {subsection}{\numberline {6.1}Fertigung der Rennstrecke}{15}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Einf\IeC {\"u}hrungsrunde}{15}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Einbinden der Sensoren}{15}{subsection.6.3}
-\contentsline {section}{Selbst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{16}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.2}Einf\IeC {\"u}hrungsrunde}{16}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Einbinden der Sensoren}{16}{subsection.6.3}
+\contentsline {section}{Selbst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{17}{subsection.6.3}

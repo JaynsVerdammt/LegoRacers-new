@@ -261,7 +261,7 @@
 		\include{chapter/20_kapitel}
 	
 	\section{Projektziel}
-	Das Ziel des Lego Racers Projekts ist es, mithilfe von LEGO Mindstorm Bausteinen autonom fahrende Rennwagen zu realisieren. Diese sollen eine vorgegebene Strecke in möglichst kurzer Zeit zu befahren. Es musss möglich sein, eine Strecke mit mehreren Fahrzeugen kollisionsfrei zu durchfahren. Zusätzlich soll eine Möglichkeit bestehen, die Fahrzeuge per Smartphone zu steuern um verschiedene Modi zu ermöglichen. Ziel ist zunächst der Bau eines Fahrzeuges, das auf optimales Befahren der Strecke ausgelegt ist. Anschließend soll das Projekt um weitere Fahrzeuge erweitert werden, die die Funktionalitäten des Prototyps übernehmen und zusätzlich Kollisionsvermeidung ermöglichen sollen.
+	Das Ziel des Lego Racers Projekts ist es, mithilfe von LEGO Mindstorm Bausteinen autonom fahrende Rennwagen zu realisieren. Diese sollen eine vorgegebene Strecke in möglichst kurzer Zeit befahren. Darüber hinaus wird angestrebt, eine Strecke mit mehreren Fahrzeugen kollisionsfrei zu durchfahren. Als mögliche Erweiterung wird die Steuerung der Fahrzeuge per Smartphone-App angedacht, um verschiedene Modi zu ermöglichen. Ziel ist zunächst der Bau eines Fahrzeuges, das auf optimales Befahren der Strecke ausgelegt ist. Erweiternd soll das Projekt um weitere Fahrzeuge ergänzt werden, die die Funktionalitäten des Prototyps übernehmen und zusätzlich Kollisionsvermeidung ermöglichen sollen.
 	
 	\newpage
 	
@@ -360,7 +360,7 @@
 	\end{tabular}
 	
 	\newpage
-	\subsection{Streckengestaltung}
+	\subsection{Streckengestaltung}\label{strecke}
 	Die Strecke wird dem Fahrzeug mithilfe von Farbcodierungen mitgeteilt.
 	
 	\begin{figure}[h]
@@ -394,7 +394,7 @@
 	\end{tabular}
 	
 	\newpage
-	\subsection{Fahrzeuganforderungen}
+	\subsection{Fahrzeuganforderungen}\label{fahrzeugAnf}
 		\begin{figure}[h]
 					\includegraphics[scale=0.9]{../Bilder/Fahrzeug.png}
 					\caption{Sensoren am Fahrzeug}
@@ -472,7 +472,7 @@
 		\end{tabular}
 		
 	\bigskip
-	Die meisten Farben lassen sich laut Testreihe relativ gut unterscheiden. Lediglich der Unterschied zwischen gelb und weiß (in dem Fall Kreppband) ist sehr gering. Deshalb werden gelbe Linien nicht verwendet (siehe Abschnitt\textit{ Streckengestaltung}).
+	Die meisten Farben lassen sich laut Testreihe relativ gut unterscheiden. Lediglich der Unterschied zwischen gelb und weiß (in dem Fall Kreppband) ist sehr gering. Deshalb werden gelbe Linien nicht verwendet (siehe Kapitel~\ref{strecke}).
 	
 	\subsubsection{Drucksensor}
 	Die Drucksensoren dienen der frühzeitigen Kollisionserkennung. Anhand eines Drucktests stellte sich heraus, dass der Sensor ein Hindernis erst bei vollständig eingedrücktem Sensorfeld erkennt. Leichter Druck löst keine Zustandsänderung aus. Dies könnte ein Problem bei der späteren Umsetzung darstellen, da ein spezieller Aufbau nötig wird, um eine bevorstehende Kollision zu erkennen, bevor sie tatsächlich eintritt. 
@@ -504,7 +504,7 @@
 	Generell funktioniert die Teamarbeit in unserem Projekt sehr gut, da sich jeder für das Projekt interessiert und verantwortlich fühlt.
 	
 	\bigskip
-	Die genaue Verteilung der Sensoren auf dem Fahrzeug (siehe Kapitel \textit{Fahrzeuganforderungen}) wird aktuell diskutiert. Unter anderem steht die Frage der Verwendung eines Multiplexers im Raum, um so mehr Sensoren an den NXT anschließen und in der Software verwenden zu können. 
+	Die genaue Verteilung der Sensoren auf dem Fahrzeug (siehe Kapitel~\ref{fahrzeugAnf}) wird aktuell diskutiert. Unter anderem steht die Frage der Verwendung eines Multiplexers im Raum, um so mehr Sensoren an den NXT anschließen und in der Software verwenden zu können. 
 	
 	\newpage
 	\section{Projektplan zum weiteren Vorgehen}
@@ -527,7 +527,7 @@
 	\newpage
 	\section{Zweite Umsetzungsphase}
 	\subsection{Fertigung der Rennstrecke}
-	Als Rennstrecke dienen drei Sperrholz-Platten, die zu einer großen Platte mit den Maßen 2m x 1,80m zusammengefügt werden können. Um die Farberkennung durch die RGB-Sensoren möglichst fehlerresistent zu gestalten, wurden die Platten weiß bemalt. Als Fahrbahn dient eine speziell zugeschnittene schwarze Folie.
+	Als Rennstrecke dienen drei Sperrholz-Platten, die zu einer großen Platte mit den Maßen 2m x 1,80m zusammengefügt werden können. Um die Farberkennung durch die RGB-Sensoren möglichst fehlerresistent zu gestalten, wurden die Platten weiß bemalt. 
 	
 	\begin{figure}[h!]
 	\centering
@@ -542,11 +542,34 @@
 	  \label{fig:sub2}
 	\end{subfigure}
 	\vspace{10pt}
-	\caption{Fertigung der Rennstrecke}
-	\label{fig:gebauteStrecke}
+	\caption{Vorbereiten der Sperrholzplatten}
+	\label{fig:gebauteStrecke}	
 	\end{figure}
 	
+	Als Fahrbahn dient eine speziell zugeschnittene schwarze Klebe-Folie. Dabei wurde zunächst der maximale Einschlagwinkel des Fahrzeugs ermittelt und darauf basierend die Kurven vorgezeichnet. Anschließend wurden die Streckenabschnitte in Geraden und Kurven unterteilt und die jeweiligen Abschnitte aus der Folie ausgeschnitten. Die Form der Rennbahn orientiert sich an den Streckenüberlegungen aus Kap.~\ref{strecke}. Es liegen sowohl Rechts-, als auch Linkskurven vor, die alle unterschiedliche Kurvenwinkel aufweisen.
+	\smallskip
+	
+		\begin{figure}[h!]
+		\centering
+		\begin{subfigure}{.5\textwidth}
+		  \centering
+		  \includegraphics[width=.8\linewidth]{../Bilder/zeichnen.jpg}
+		  \label{fig:sub3}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+		  \centering
+		  \includegraphics[width=.8\linewidth]{../Bilder/rennstreckefertig.jpg}
+		  \label{fig:sub4}
+		\end{subfigure}
+		\vspace{10pt}
+		\caption{Fertigung der Rennstrecke}
+		\label{fig:gebauteStrecke2}	
+		\end{figure}
+	
+	Zur Erkennung der Übergänge zwischen Kurven und Geraden dienen grüne Pappstreifen von 1cm Breite. Die Startlinie markiert ein roter Streifen Pappe. 
+	
 	\subsection{Einführungsrunde}
+	
 	
 	\subsection{Einbinden der Sensoren}
 		

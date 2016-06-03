@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.12.20)  12 MAY 2016 16:05
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.12.20)  3 JUN 2016 10:21
 entering extended mode
 **studienarbeit.tex
 
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -825,24 +825,24 @@ Package hyperref Warning: Invalid value `0'
 (hyperref)                Option setting is ignored on input line 186.
 
 
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.aux
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/10_titel_seminar.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/12_inhaltsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/13_abkuerzungsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/15_abbildungsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\chapter/20_kapitel.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/18_literaturverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/19_index.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/20_erklaerung.aux))
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.aux
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/10_titel_seminar.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/12_inhaltsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/13_abkuerzungsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/15_abbildungsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\chapter/20_kapitel.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/18_literaturverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/19_index.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/20_erklaerung.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 239.
 LaTeX Font Info:    ... okay on input line 239.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 239.
@@ -906,10 +906,10 @@ LaTeX Info: Redefining \ref on input line 239.
 LaTeX Info: Redefining \pageref on input line 239.
 LaTeX Info: Redefining \nameref on input line 239.
 
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.out)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.out)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.out)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.out)
 \@outlinefile=\write7
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
@@ -937,8 +937,8 @@ Package caption Info: End \AtBeginDocument code.
 )
 \c@lstlisting=\count164
 
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/10_titel_seminar.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/10_titel_seminar.tex
 <images/dhbw.png, id=94, 912.40875pt x 481.04718pt>
 File: images/dhbw.png Graphic file (type png)
  <use images/dhbw.png>
@@ -952,12 +952,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 [1
 
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/D060463/Document
-s/GitHub/Lego-Racers/dokumentation/Studienarbeit_LEGO/images/dhbw.png>])
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/12_inhaltsverzeichnis.tex
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.toc)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/D060463/git/Lego
+Racers-new/LegoRacers/Documentation/Studienarbeit_LEGO/images/dhbw.png>])
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/12_inhaltsverzeichnis.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.toc)
 \tf@toc=\write8
 
 
@@ -970,14 +970,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ])
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/13_abkuerzungsverzeichnis.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/13_abkuerzungsverzeichnis.tex
 No file studienarbeit.nls.
 )
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/15_abbildungsverzeichnis.tex
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.lof)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/15_abbildungsverzeichnis.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.lof)
 \tf@lof=\write9
  [3
 
@@ -990,32 +990,32 @@ No file chapter/20_kapitel.tex.
 
 
 
-] [2] [3] [4] <../Bilder/Rennstrecke.png, id=170, 347.49825pt x 314.3745pt>
+] [2] [3] [4] <../Bilder/Rennstrecke.png, id=172, 347.49825pt x 314.3745pt>
 File: ../Bilder/Rennstrecke.png Graphic file (type png)
 
 <use ../Bilder/Rennstrecke.png>
 Package pdftex.def Info: ../Bilder/Rennstrecke.png used on input line 368.
 (pdftex.def)             Requested size: 347.49738pt x 314.37372pt.
 
-<../Bilder/RennstreckeBesser.png, id=171, 347.49825pt x 313.17pt>
+<../Bilder/RennstreckeBesser.png, id=173, 347.49825pt x 313.17pt>
 File: ../Bilder/RennstreckeBesser.png Graphic file (type png)
 
 <use ../Bilder/RennstreckeBesser.png>
 Package pdftex.def Info: ../Bilder/RennstreckeBesser.png used on input line 380
 .
 (pdftex.def)             Requested size: 347.49738pt x 313.16922pt.
- [5 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/Rennstr
-ecke.png>] [6 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bild
-er/RennstreckeBesser.png>]
-<../Bilder/Fahrzeug.png, id=180, 488.42474pt x 247.52475pt>
+ [5 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/Rennst
+recke.png>] [6 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bi
+lder/RennstreckeBesser.png>]
+<../Bilder/Fahrzeug.png, id=182, 488.42474pt x 247.52475pt>
 File: ../Bilder/Fahrzeug.png Graphic file (type png)
 
 <use ../Bilder/Fahrzeug.png>
 Package pdftex.def Info: ../Bilder/Fahrzeug.png used on input line 399.
 (pdftex.def)             Requested size: 439.5782pt x 222.7702pt.
- [7 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/Fahrzeu
-g.png>]
-<../Bilder/Aktivitaetsdiagramm.png, id=185, 461.3235pt x 561.297pt>
+ [7 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/Fahrze
+ug.png>]
+<../Bilder/Aktivitaetsdiagramm.png, id=187, 461.3235pt x 561.297pt>
 File: ../Bilder/Aktivitaetsdiagramm.png Graphic file (type png)
 
 <use ../Bilder/Aktivitaetsdiagramm.png>
@@ -1027,16 +1027,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 409--411
 
  []
 
-[8 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/Aktivita
-etsdiagramm.png>]
-<../Bilder/Klassendiagramm.png, id=190, 646.8165pt x 477.58424pt>
+[8 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/Aktivit
+aetsdiagramm.png>]
+<../Bilder/Klassendiagramm.png, id=192, 646.8165pt x 477.58424pt>
 File: ../Bilder/Klassendiagramm.png Graphic file (type png)
 
 <use ../Bilder/Klassendiagramm.png>
 Package pdftex.def Info: ../Bilder/Klassendiagramm.png used on input line 419.
 (pdftex.def)             Requested size: 452.76846pt x 334.30669pt.
- [9 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/Klassen
-diagramm.png>] [10]
+ [9 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/Klasse
+ndiagramm.png>] [10]
 Overfull \hbox (3.86336pt too wide) in paragraph at lines 464--473
 [][] 
  []
@@ -1046,16 +1046,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 481--482
 
  []
 
-<../Bilder/Ultraschallsensor.png, id=206, 324.0105pt x 146.34676pt>
+<../Bilder/Ultraschallsensor.png, id=209, 324.0105pt x 146.34676pt>
 File: ../Bilder/Ultraschallsensor.png Graphic file (type png)
 
 <use ../Bilder/Ultraschallsensor.png>
 Package pdftex.def Info: ../Bilder/Ultraschallsensor.png used on input line 485
 .
 (pdftex.def)             Requested size: 324.0097pt x 146.34639pt.
- [12 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/Ultras
-challsensor.png>] [13]
-<../Bilder/PlanV1.png, id=215, 572.73975pt x 376.40625pt>
+ [12 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/Ultra
+schallsensor.png>] [13]
+<../Bilder/PlanV1.png, id=219, 572.73975pt x 376.40625pt>
 File: ../Bilder/PlanV1.png Graphic file (type png)
 
 <use ../Bilder/PlanV1.png>
@@ -1066,33 +1066,51 @@ Overfull \hbox (2.9483pt too wide) in paragraph at lines 514--515
  [] 
  []
 
-[14 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/PlanV1.
-png>] <../Bilder/plattenmalen.jpg, id=223, 537.207pt x 731.1315pt>
+[14 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/PlanV1
+.png>] <../Bilder/plattenmalen.jpg, id=227, 537.207pt x 731.1315pt>
 File: ../Bilder/plattenmalen.jpg Graphic file (type jpg)
 
 <use ../Bilder/plattenmalen.jpg>
 Package pdftex.def Info: ../Bilder/plattenmalen.jpg used on input line 536.
 (pdftex.def)             Requested size: 136.57462pt x 185.87268pt.
 
-<../Bilder/plattenfertig.jpg, id=224, 2457.18pt x 3276.24pt>
+<../Bilder/plattenfertig.jpg, id=228, 2457.18pt x 3276.24pt>
 File: ../Bilder/plattenfertig.jpg Graphic file (type jpg)
 
 <use ../Bilder/plattenfertig.jpg>
 Package pdftex.def Info: ../Bilder/plattenfertig.jpg used on input line 541.
 (pdftex.def)             Requested size: 136.57462pt x 182.06844pt.
- [15 <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder/platte
-nmalen.jpg> <C:/Users/D060463/Documents/GitHub/Lego-Racers/dokumentation/Bilder
-/plattenfertig.jpg>]
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/18_literaturverzeichnis.tex
+
+<../Bilder/zeichnen.jpg, id=230, 564.9105pt x 333.04425pt>
+File: ../Bilder/zeichnen.jpg Graphic file (type jpg)
+
+<use ../Bilder/zeichnen.jpg>
+Package pdftex.def Info: ../Bilder/zeichnen.jpg used on input line 556.
+(pdftex.def)             Requested size: 182.09833pt x 107.35385pt.
+
+<../Bilder/rennstreckefertig.jpg, id=231, 3008.23875pt x 2297.58376pt>
+File: ../Bilder/rennstreckefertig.jpg Graphic file (type jpg)
+
+<use ../Bilder/rennstreckefertig.jpg>
+Package pdftex.def Info: ../Bilder/rennstreckefertig.jpg used on input line 561
+.
+(pdftex.def)             Requested size: 182.09833pt x 139.07611pt.
+ [15 <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bilder/platt
+enmalen.jpg> <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documentation/Bild
+er/plattenfertig.jpg> <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Documenta
+tion/Bilder/zeichnen.jpg> <C:/Users/D060463/git/LegoRacers-new/LegoRacers/Docum
+entation/Bilder/rennstreckefertig.jpg>]
+[16]
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/18_literaturverzeichnis.tex
 No file studienarbeit.bbl.
 )
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/19_index.tex
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.ind))
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/20_erklaerung.tex) [16
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/19_index.tex
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.ind))
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/20_erklaerung.tex) [17
 
 
 
@@ -1103,49 +1121,49 @@ No file studienarbeit.bbl.
 Package glossaries Warning: No \printglossary or \printglossaries found.
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 566.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 566.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
 
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\studienarbeit.aux
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/10_titel_seminar.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/12_inhaltsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/13_abkuerzungsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/15_abbildungsverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\chapter/20_kapitel.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/18_literaturverzeichnis.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/19_index.aux)
-(C:\Users\D060463\Documents\GitHub\Lego-Racers\dokumentation\Studienarbeit_LEGO
-\pages/20_erklaerung.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 566.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 566.
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\studienarbeit.aux
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/10_titel_seminar.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/12_inhaltsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/13_abkuerzungsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/15_abbildungsverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\chapter/20_kapitel.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/18_literaturverzeichnis.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/19_index.aux)
+(C:\Users\D060463\git\LegoRacers-new\LegoRacers\Documentation\Studienarbeit_LEG
+O\pages/20_erklaerung.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
 Package rerunfilecheck Info: File `studienarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: 0BC800567422F2D2DF3C7A9F82E72FEB;1657.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 566.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
  ) 
 Here is how much of TeX's memory you used:
- 13779 strings out of 493921
- 204421 string characters out of 3147275
- 346713 words of memory out of 3000000
- 16701 multiletter control sequences out of 15000+200000
+ 13798 strings out of 493921
+ 204894 string characters out of 3147275
+ 347165 words of memory out of 3000000
+ 16716 multiletter control sequences out of 15000+200000
  10798 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 46i,12n,75p,1557b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,12n,75p,1557b,485s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on studienarbeit.pdf (19 pages, 2063214 bytes).
+Output written on studienarbeit.pdf (20 pages, 3142918 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 276 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
