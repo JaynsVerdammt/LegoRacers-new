@@ -38,7 +38,7 @@ public class IntroductionLap {
 	public LinkedList<TrackData> sections = new LinkedList<TrackData>();
 	
 	// Parameters
-	private int default_radius_curve = 30; // in degree
+	private int default_radius_curve = 40; // in degree
 	private int default_delay_before_turning = 2; // turnings of wheel
 	private int default_speed = 200; // default speed for car in introduction lap
 	
@@ -129,40 +129,38 @@ public class IntroductionLap {
 	private void before_c_lap(int colorLeft, int colorRight) throws IllegalStartPositionException {
 		if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
 			abschnitt = GERADE;
-		}
-		/*
-		if (!isOnLine && colorLeft != RGBControl.RED && colorRight != RGBControl.RED) {
-			// unmögliche Startposition, da nicht als erstes die Start/Ziel-Linie überquert wird
-			throw new IllegalStartPositionException("IllExcp");
-		}
-		else if (isOnLine && colorLeft == RGBControl.BLACK && colorRight == RGBControl.BLACK) {
-			isOnLine = false;
-			abschnitt = GERADE;
 			startGerade();
 		}
-		else {
-			isOnLine = true;
-		}*/
 	}
 	
 	private void after_c_lap(int colorLeft, int colorRight) {
 		motorControl.brakeTo(0);
+		LCD.drawString("Fertig", 0, 6);
+		sleep(10000);
 	}
 	
 	private void gerade(int colorLeft, int colorRight) throws UnknownStateException {
-		
 		if (colorLeft == RGBControl.WHITE || colorRight == RGBControl.WHITE) {
 			stop();
-			LCD.drawString("weiß", 0, 6);
-			sleep(5000);
+			LCD.drawString("weiss", 0, 6);
+			sleep(3000);
 			accelerateTo(default_speed);
 		}
+		// Kurve startet
 		else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
-			stop();
-			LCD.drawString("grün", 0, 6);
-			sleep(5000);
-			accelerateTo(default_speed);
+			LCD.drawString("green", 0, 6);
+			endGerade();
+			abschnitt = KURVE;
+			startKurve();
 		}
+		// Ende erreicht
+		else if (colorLeft == RGBControl.RED || colorRight == RGBControl.RED) {
+			stop();
+			abschnitt = AFTER_C_LAP;
+			LCD.drawString("ENDEE", 0, 6);
+			
+		}
+		
 		/*
 		
 		if (isOnLine) {
@@ -200,7 +198,23 @@ public class IntroductionLap {
 	}
 	
 	private void kurve(int colorLeft, int colorRight) throws UnknownStateException {
-		if (isOnLine) {
+		if (colorLeft == RGBControl.WHITE || colorRight == RGBControl.WHITE) {
+			stop();
+			LCD.drawString("weiss", 0, 6);
+			sleep(3000);
+			accelerateTo(default_speed);
+		}
+		// Kurve startet
+		else if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
+			LCD.drawString("green", 0, 6);
+			endKurve();
+			abschnitt = GERADE;
+			startGerade();
+		}
+		
+		
+		
+		/*if (isOnLine) {
 			if (colorLeft == RGBControl.GREEN || colorRight == RGBControl.GREEN) {
 				// do nothing
 			}
@@ -271,7 +285,7 @@ public class IntroductionLap {
 			else {
 				throw new UnknownStateException();
 			}
-		}
+		}*/
 	}
 	
 	private void startGerade() {
@@ -293,7 +307,7 @@ public class IntroductionLap {
 			steeringControl.steerLeft(currentKurve.getSteeringRate());
 		}
 		else {
-			steeringControl.steerLeft(currentKurve.getSteeringRate());
+			steeringControl.steerRight(currentKurve.getSteeringRate());
 		}
 		accelerateTo(default_speed);
 		inSection = true;
@@ -323,10 +337,16 @@ public class IntroductionLap {
 				}
 			}
 			else {
+				stop();
+				LCD.drawString("set back", 0, 6);
+				sleep(3000);
+				//accelerateTo(default_speed);				
+				return direction;
+				/*
 				if (RGBLeft.getColor() == RGBControl.GREEN || RGBRight.getColor() == RGBControl.GREEN) {
 					accelerateTo(default_speed);
 					return direction;
-				}
+				}*/
 			}
 		}
 	}

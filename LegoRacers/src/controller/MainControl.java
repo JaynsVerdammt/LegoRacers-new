@@ -47,7 +47,17 @@ public class MainControl {
 		ultrasonicControl.start();
 
 	}
-
+	
+	public void startIntroductionLap() {
+		IntroductionLap l = new IntroductionLap(motorControl, steeringControl, rgbControlLeft, rgbControlRight);
+		try {
+			l.startLap();
+		}
+		catch (Exception e) {
+			LCD.drawString("Exception: " + e.getMessage(), 0, 2);
+		}
+	}
+	
 	public void cornerDetected(int correction) {
 		currentTrackCorner = TrackControl.getCurrentTrackCorner();
 
