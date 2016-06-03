@@ -40,7 +40,7 @@ public class MainControl {
 		touchControl = new TouchControl(this);
 		ultrasonicControl = new UltrasonicControl(this);
 
-		steeringControl.start();
+		//steeringControl.start();
 		rgbControlLeft.start();
 		rgbControlRight.start();
 		touchControl.start();

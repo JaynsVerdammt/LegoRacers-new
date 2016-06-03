@@ -5,6 +5,8 @@ public class TrackCorner extends TrackData{
 	public static final int LEFT = 0;
 	public static final int RIGHT = 1;
 	
+	private int steeringRate = 45;
+	
 	public int getDirection() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -12,7 +14,7 @@ public class TrackCorner extends TrackData{
 
 	public int getSteeringRate() {
 		// TODO Auto-generated method stub
-		return 0;
+		return steeringRate;
 	}
 	
 	public int getDelay() {
@@ -24,7 +26,7 @@ public class TrackCorner extends TrackData{
 	}
 	
 	public void setSteeringRate(int newRate) {
-		
+		steeringRate = newRate;
 	}
 	
 	public void setDelay(int delay) {
